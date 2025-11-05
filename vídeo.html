@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serviços de Vídeo - Blá Comunicação</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset e configurações gerais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --amarelo: #f5d603;
+            --laranja: #f08406;
+            --preto: #000000;
+            --branco: #FFFFFF;
+            --cinza-claro: #f7e67b;
+            --cinza-medio: #e9ecef;
+            --cinza-escuro: #333333;
+        }
+        
+        body {
+            background-color: var(--cinza-claro);
+            color: var(--preto);
+            line-height: 1.6;
+        }
+        
+        /* Cabeçalho */
+        header {
+            background-color: var(--preto);
+            padding: 1.5rem 0;
+            text-align: center;
+            color: var(--preto);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .logo-img {
+            max-width: 200px;
+            height: auto;
+            transition: all 0.3s ease;
+        }
+        
+        .slogan {
+            font-size: 1.1rem;
+            font-weight: 300;
+            opacity: 0.8;
+            color: var(--branco);
+        }
+        
+        /* Seção de introdução */
+        .intro {
+            padding: 3rem 2rem;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--branco);
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .intro h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--preto);
+        }
+        
+        .intro p {
+            font-size: 1.1rem;
+            color: var(--cinza-escuro);
+        }
+        
+        /* Container de serviços */
+        .servicos-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .servicos-container h2 {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--cinza-escuro);
+            font-weight: 600;
+        }
+        
+        .servico-card {
+            background-color: var(--branco);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            flex: 1 1 300px;
+            max-width: 350px;
+            display: flex;
+            flex-direction: column;
+            border-top: 4px solid var(--laranja);
+        }
+        
+        .servico-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+        
+        .servico-header {
+            background-color: var(--branco);
+            color: var(--preto);
+            padding: 1.5rem;
+            text-align: center;
+            border-bottom: 1px solid var(--cinza-medio);
+        }
+        
+        .servico-header h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: var(--laranja);
+            font-weight: 600;
+        }
+        
+        .servico-preco {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--preto);
+            margin: 0.5rem 0;
+        }
+        
+        .servico-body {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .servico-descricao {
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+        
+        .servico-descricao p {
+            margin-bottom: 1rem;
+            color: var(--cinza-escuro);
+        }
+        
+        .servico-detalhes {
+            list-style-type: none;
+            padding-left: 0;
+            margin-top: 1rem;
+        }
+        
+        .servico-detalhes li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+            color: var(--cinza-escuro);
+        }
+        
+        .servico-detalhes li:before {
+            content: "•";
+            color: var(--laranja);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .servico-acoes {
+            display: flex;
+            gap: 1rem;
+            margin-top: auto;
+        }
+        
+        .btn-ver, .btn-eu-quero {
+            flex: 1;
+            padding: 12px 0;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        
+        .btn-ver {
+            background-color: var(--cinza-medio);
+            color: var(--cinza-escuro);
+        }
+        
+        .btn-ver:hover {
+            background-color: #dde1e6;
+        }
+        
+        .btn-eu-quero {
+            background-color: var(--laranja);
+            color: var(--branco);
+        }
+        
+        .btn-eu-quero:hover {
+            background-color: #e07605;
+        }
+        
+        /* Modal/Popup */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background-color: var(--branco);
+            border-radius: 10px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .modal-header {
+            background-color: var(--preto);
+            color: var(--branco);
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-header h3 {
+            color: var(--amarelo);
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            color: var(--branco);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .carrossel {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+        }
+        
+        .carrossel-slides {
+            display: flex;
+            transition: transform 0.5s ease;
+            height: 100%;
+        }
+        
+        .carrossel-slide {
+            min-width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f9f9f9;
+        }
+        
+        .carrossel-slide img, .carrossel-slide video {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        .carrossel-controles {
+            position: absolute;
+            bottom: 1rem;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .carrossel-btn {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: var(--branco);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .carrossel-btn:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        
+        .carrossel-indicadores {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            padding-bottom: 1rem;
+        }
+        
+        .indicador {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #ddd;
+            cursor: pointer;
+        }
+        
+        .indicador.ativo {
+            background-color: var(--laranja);
+        }
+        
+        /* Rodapé */
+        footer {
+            background-color: var(--preto);
+            color: var(--branco);
+            padding: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .contato {
+            margin-bottom: 1.5rem;
+        }
+        
+        .contato h3 {
+            margin-bottom: 1rem;
+            color: var(--laranja);
+        }
+        
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        /* Botão para voltar ao início */
+        .btn-voltar {
+            display: inline-block;
+            margin: 1rem auto;
+            padding: 0.7rem 1.5rem;
+            background-color: var(--laranja);
+            color: var(--branco);
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .btn-voltar:hover {
+            background-color: #e07605;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .servicos-container {
+                padding: 1rem;
+            }
+            
+            .intro {
+                padding: 2rem 1rem;
+            }
+            
+            .intro h2 {
+                font-size: 1.7rem;
+            }
+            
+            .servico-acoes {
+                flex-direction: column;
+            }
+            
+            .carrossel {
+                height: 300px;
+            }
+            
+            .logo-img {
+                max-width: 150px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo-img {
+                max-width: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="BLÁ-COMUNICAÇÃO-LOGO_04.png" alt="Blá Comunicação" class="logo-img" id="logo">
+        </div>
+        <div class="slogan"></div>
+    </header>
+    
+    <section class="intro">
+        <h2>Produção de Vídeo Profissional</h2>
+        <p>Na Blá Comunicação, criamos conteúdos em vídeo que engajam, comunicam e convertem, utilizando técnicas profissionais e equipamentos de alta qualidade.</p>
+        <a href="index.html" class="btn-voltar">Voltar à Página Inicial</a>
+    </section>
+    
+    <section class="servicos-container">
+        <h2>Serviços de Vídeo</h2>
+
+        <div class="servico-card">
+            <div class="servico-header">
+                <h3>Vídeo para Redes Sociais</h3>
+                <div class="servico-preco">R$ 100,00</div>
+                <p>Até 60 segundos</p>
+            </div>
+            <div class="servico-body">
+                <div class="servico-descricao">
+                    <p>Conteúdo otimizado para redes sociais.</p>
+                    <ul class="servico-detalhes">
+                        <li>Formato vertical (9:16)</li>
+                        <li>Legendas e elementos visuais</li>
+                        <li>Otimizado para engajamento</li>
+                        <li>Entrega em até 2 dias úteis</li>
+                        <li>Gravação com celular</li>
+                    </ul>
+                </div>
+                <div class="servico-acoes">
+                    <button class="btn-ver" data-servico="video-redes">Ver</button>
+                    <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=SEU_ID_DO_FORMULARIO_AQUI" class="btn-eu-quero" target="_blank">Eu quero</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="servico-card">
+            <div class="servico-header">
+                <h3>Vídeo de 1 Minuto</h3>
+                <div class="servico-preco">R$ 450,00</div>
+                <p>Gravação externa</p>
+            </div>
+            <div class="servico-body">
+                <div class="servico-descricao">
+                    <p>Perfeito para ações promocionais e lançamentos.</p>
+                    <ul class="servico-detalhes">
+                        <li>Localização pode influenciar no valor</li>
+                        <li>Edição e tratamento de áudio</li>
+                        <li>Inclusão de legendas</li>
+                        <li>Entrega em até 7 dias úteis</li>
+                    </ul>
+                </div>
+                <div class="servico-acoes">
+                    <button class="btn-ver" data-servico="video-1min">Ver</button>
+                    <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=SEU_ID_DO_FORMULARIO_AQUI" class="btn-eu-quero" target="_blank">Eu quero</a>
+                </div>
+            </div>
+        </div>        
+               
+        <div class="servico-card">
+            <div class="servico-header">
+                <h3>Mídia Indoor 1 min</h3>
+                <div class="servico-preco">R$ 400,00</div>
+                <p>Produção com imagens fornecidas</p>
+            </div>
+            <div class="servico-body">
+                <div class="servico-descricao">
+                    <p>Vídeo para displays internos de até 1 minuto.</p>
+                    <ul class="servico-detalhes">
+                        <li>Produção com imagens do cliente</li>
+                        <li>Ou utilização de banco de imagens</li>
+                        <li>Sem trilha sonora</li>
+                        <li>Formato Full HD</li>
+                    </ul>
+                </div>
+                <div class="servico-acoes">
+                    <button class="btn-ver" data-servico="midia-1min">Ver</button>
+                    <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=SEU_ID_DO_FORMULARIO_AQUI" class="btn-eu-quero" target="_blank">Eu quero</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="servico-card">
+            <div class="servico-header">
+                <h3>Mídia Indoor 2 min</h3>
+                <div class="servico-preco">R$ 700,00</div>
+                <p>Produção com imagens fornecidas</p>
+            </div>
+            <div class="servico-body">
+                <div class="servico-descricao">
+                    <p>Vídeo para displays internos de até 2 minutos.</p>
+                    <ul class="servico-detalhes">
+                        <li>Produção com imagens do cliente</li>
+                        <li>Ou utilização de banco de imagens</li>
+                        <li>Sem trilha sonora</li>
+                        <li>Formato Full HD</li>
+                    </ul>
+                </div>
+                <div class="servico-acoes">
+                    <button class="btn-ver" data-servico="midia-2min">Ver</button>
+                    <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=SEU_ID_DO_FORMULARIO_AQUI" class="btn-eu-quero" target="_blank">Eu quero</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="servico-card">
+            <div class="servico-header">
+                <h3>Mídia Indoor +2min</h3>
+                <div class="servico-preco">Sob consulta</div>
+                <p>Orçamento personalizado</p>
+            </div>
+            <div class="servico-body">
+                <div class="servico-descricao">
+                    <p>Vídeos para displays internos acima de 2 minutos.</p>
+                    <ul class="servico-detalhes">
+                        <li>Valor conforme duração e complexidade</li>
+                        <li>Produção com imagens do cliente</li>
+                        <li>Ou utilização de banco de imagens</li>
+                        <li>Entrega conforme prazo combinado</li>
+                    </ul>
+                </div>
+                <div class="servico-acoes">
+                    <button class="btn-ver" data-servico="midia-mais2min">Ver</button>
+                    <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=SEU_ID_DO_FORMULARIO_AQUI" class="btn-eu-quero" target="_blank">Eu quero</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="servico-card">
+            <div class="servico-header">
+                <h3>Vídeo Institucional</h3>
+                <div class="servico-preco">R$ 1.200,00</div>
+                <p>Até 3 minutos</p>
+            </div>
+            <div class="servico-body">
+                <div class="servico-descricao">
+                    <p>Vídeo profissional para apresentar sua empresa.</p>
+                    <ul class="servico-detalhes">
+                        <li>Roteiro personalizado</li>
+                        <li>Gravação em local adequado</li>
+                        <li>Edição profissional com trilha sonora</li>
+                        <li>Entrega em até 10 dias úteis</li>
+                    </ul>
+                </div>
+                <div class="servico-acoes">
+                    <button class="btn-ver" data-servico="video-institucional">Ver</button>
+                    <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=SEU_ID_DO_FORMULARIO_AQUI" class="btn-eu-quero" target="_blank">Eu quero</a>
+                </div>
+            </div>
+        </div>        
+        
+    </section>
+    
+    <!-- Modal/Popup -->
+    <div class="modal" id="modal-servico">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-titulo">Título do Serviço</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="carrossel">
+                <div class="carrossel-slides" id="carrossel-slides">
+                    <!-- Slides serão inseridos via JavaScript -->
+                </div>
+                <div class="carrossel-controles">
+                    <button class="carrossel-btn" id="carrossel-anterior">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="carrossel-btn" id="carrossel-proximo">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="carrossel-indicadores" id="carrossel-indicadores">
+                <!-- Indicadores serão inseridos via JavaScript -->
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="contato">
+            <h3>Entre em contato</h3>
+            <p>Email: contato@blacomunicacao.com</p>
+            <p>Telefone: (11) 9565-84634</p>
+        </div>
+        <div class="copyright">
+            &copy; 2023 Blá Comunicação. Todos os direitos reservados.
+        </div>
+    </footer>
+    
+    <script>
+        // Função para configurar o tamanho da logo
+        function configurarLogo(tamanho, corBorda, espessuraBorda) {
+            const logo = document.getElementById('logo');
+            
+            // Configurar tamanho
+            if (tamanho) {
+                logo.style.maxWidth = tamanho;
+            }
+            
+            // Configurar borda
+            if (corBorda && espessuraBorda) {
+                logo.style.border = `${espessuraBorda} solid ${corBorda}`;
+                logo.style.borderRadius = '8px';
+                logo.style.padding = '5px';
+            } else if (corBorda) {
+                logo.style.border = `2px solid ${corBorda}`;
+                logo.style.borderRadius = '8px';
+                logo.style.padding = '5px';
+            } else if (espessuraBorda) {
+                logo.style.border = `${espessuraBorda} solid transparent`;
+            }
+        }
+
+        // Dados dos serviços para o carrossel
+        const servicos = {
+            'video-1min': {
+                titulo: 'Vídeo de 1 Minuto',
+                midias: [
+                    { tipo: 'video', src: 'https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.zip' },
+                    { tipo: 'imagem', src: 'https://placehold.co/800x600/f08406/FFFFFF?text=Video+1+Minuto' }
+                ]
+            },
+            'video-gif': {
+                titulo: 'Vídeo GIF - 10 segundos',
+                midias: [
+                    { tipo: 'imagem', src: 'https://placehold.co/800x600/f08406/FFFFFF?text=GIF+Animado+1' },
+                    { tipo: 'imagem', src: 'https://placehold.co/800x600/f5d603/333333?text=GIF+Animado+2' }
+                ]
+            },
+            'midia-1min': {
+                titulo: 'Mídia Indoor - 1 minuto',
+                midias: [
+                    { tipo: 'video', src: 'https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.zip' },
+                    { tipo: 'imagem', src: 'https://placehold.co/800x600/f08406/FFFFFF?text=Mídia+Indoor+1min' }
+                ]
+            },
+            'midia-2min': {
+                titulo: 'Mídia Indoor - 2 minutos',
+                midias: [
+                    { tipo: 'video', src: 'https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.zip' },
+                    { tipo: 'imagem', src: 'https://placehold.co/800x600/f08406/FFFFFF?text=Mídia+Indoor+2min' }
+                ]
+            },
+            'midia-mais2min': {
+                titulo: 'Mídia Indoor - +2 minutos',
+                midias: [
+                    { tipo: 'video', src: 'https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.zip' },
+                    { tipo: 'imagem', src: 'https://placehold.co/800x600/f08406/FFFFFF?text=Mídia+Indoor+Mais+2min' }
+                ]
+            },
+            'video-institucional': {
+                titulo: 'Vídeo Institucional',
+                midias: [
+                    { tipo: 'video', src: 'https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.zip' },
+                    { tipo: 'imagem', src: 'https://placehold.co/800x600/f08406/FFFFFF?text=Video+Institucional' }
+                ]
+            },
+            'video-redes': {
+                titulo: 'Vídeo para Redes Sociais',
+                midias: [
+                    { tipo: 'video', src: 'https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.zip' },
+                    { tipo: 'imagem', src: 'https://placehold.co/800x600/f08406/FFFFFF?text=Video+Redes+Sociais' }
+                ]
+            }
+        };
+
+        // Elementos do DOM
+        const modal = document.getElementById('modal-servico');
+        const modalTitulo = document.getElementById('modal-titulo');
+        const carrosselSlides = document.getElementById('carrossel-slides');
+        const carrosselIndicadores = document.getElementById('carrossel-indicadores');
+        const btnAnterior = document.getElementById('carrossel-anterior');
+        const btnProximo = document.getElementById('carrossel-proximo');
+        const closeModal = document.querySelector('.close-modal');
+        const botoesVer = document.querySelectorAll('.btn-ver');
+
+        let slideAtual = 0;
+        let totalSlides = 0;
+
+        // Abrir modal
+        botoesVer.forEach(botao => {
+            botao.addEventListener('click', () => {
+                const servicoId = botao.getAttribute('data-servico');
+                abrirModal(servicoId);
+            });
+        });
+
+        // Fechar modal
+        closeModal.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        // Fechar modal ao clicar fora
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        // Navegação do carrossel
+        btnAnterior.addEventListener('click', () => {
+            if (slideAtual > 0) {
+                slideAtual--;
+                atualizarCarrossel();
+            }
+        });
+
+        btnProximo.addEventListener('click', () => {
+            if (slideAtual < totalSlides - 1) {
+                slideAtual++;
+                atualizarCarrossel();
+            }
+        });
+
+        // Função para abrir o modal
+        function abrirModal(servicoId) {
+            const servico = servicos[servicoId];
+            if (!servico) return;
+
+            modalTitulo.textContent = servico.titulo;
+            carrosselSlides.innerHTML = '';
+            carrosselIndicadores.innerHTML = '';
+
+            // Adicionar slides
+            servico.midias.forEach((midia, index) => {
+                const slide = document.createElement('div');
+                slide.className = 'carrossel-slide';
+
+                if (midia.tipo === 'imagem') {
+                    const img = document.createElement('img');
+                    img.src = midia.src;
+                    img.alt = `Exemplo ${index + 1}`;
+                    slide.appendChild(img);
+                } else if (midia.tipo === 'video') {
+                    const video = document.createElement('video');
+                    video.src = midia.src;
+                    video.controls = true;
+                    slide.appendChild(video);
+                }
+
+                carrosselSlides.appendChild(slide);
+
+                // Adicionar indicador
+                const indicador = document.createElement('div');
+                indicador.className = 'indicador';
+                if (index === 0) indicador.classList.add('ativo');
+                indicador.addEventListener('click', () => {
+                    slideAtual = index;
+                    atualizarCarrossel();
+                });
+                carrosselIndicadores.appendChild(indicador);
+            });
+
+            totalSlides = servico.midias.length;
+            slideAtual = 0;
+            atualizarCarrossel();
+            modal.style.display = 'flex';
+        }
+
+        // Atualizar carrossel
+        function atualizarCarrossel() {
+            carrosselSlides.style.transform = `translateX(-${slideAtual * 100}%)`;
+            
+            // Atualizar indicadores
+            const indicadores = document.querySelectorAll('.indicador');
+            indicadores.forEach((indicador, index) => {
+                if (index === slideAtual) {
+                    indicador.classList.add('ativo');
+                } else {
+                    indicador.classList.remove('ativo');
+                }
+            });
+        }
+
+        // Exemplos de uso da função configurarLogo:
+        // configurarLogo('300px', '#f08406', '3px'); // Logo maior com borda laranja
+        // configurarLogo('150px'); // Apenas muda o tamanho
+    </script>
+</body>
+</html>

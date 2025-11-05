@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blá Comunicação - Soluções Visuais para seu Negócio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset e configurações gerais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --amarelo: #f5d603;
+            --laranja: #f08406;
+            --preto: #000000;
+            --branco: #FFFFFF;
+            --cinza-claro: #f5d603;
+            --cinza-medio: #e9ecef;
+            --cinza-escuro: #333333;
+        }
+        
+        body {
+            background-color: var(--cinza-claro);
+            color: var(--preto);
+            line-height: 1.6;
+        }
+        
+        /* Cabeçalho */
+        header {
+            background-color: var(--preto);
+            padding: 1.5rem 0;
+            text-align: center;
+            color: var(--preto);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .logo-img {
+            max-width: 200px;
+            height: auto;
+            transition: all 0.3s ease;
+        }
+        
+        .slogan {
+            font-size: 1.1rem;
+            font-weight: 300;
+            opacity: 0.8;
+            color: var(--branco);
+        }
+        
+        /* Seção de introdução */
+        .intro {
+            padding: 3rem 2rem;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--branco);
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .intro h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--preto);
+        }
+        
+        .intro p {
+            font-size: 1.1rem;
+            color: var(--cinza-escuro);
+        }
+        
+        /* Categorias de serviços */
+        .categorias {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .categorias-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .categoria-card {
+            background-color: var(--branco);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            border-top: 4px solid var(--laranja);
+            padding: 2rem 1.5rem;
+        }
+        
+        .categoria-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+        
+        .categoria-icon {
+            font-size: 3rem;
+            color: var(--laranja);
+            margin: 1rem 0;
+        }
+        
+        .categoria-titulo {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--preto);
+        }
+        
+        .categoria-descricao {
+            color: var(--cinza-escuro);
+            margin-bottom: 1.5rem;
+        }
+        
+        .btn-explorar {
+            display: inline-block;
+            background-color: var(--laranja);
+            color: var(--branco);
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .btn-explorar:hover {
+            background-color: #e07605;
+        }
+        
+        /* Destaques */
+        .destaques {
+            padding: 3rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .destaques h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--cinza-escuro);
+        }
+        
+        .destaques-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .destaque-card {
+            background-color: var(--branco);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .destaque-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .destaque-imagem {
+            height: 200px;
+            background-color: var(--cinza-medio);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--cinza-escuro);
+        }
+        
+        .destaque-conteudo {
+            padding: 1.5rem;
+        }
+        
+        .destaque-conteudo h3 {
+            margin-bottom: 0.5rem;
+            color: var(--laranja);
+        }
+        
+        /* Depoimentos */
+        .depoimentos {
+            padding: 3rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            margin-top: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .depoimentos h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--cinza-escuro);
+        }
+        
+        .carrossel-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            padding: 0 1rem;
+        }
+        
+        .carrossel-track {
+            display: flex;
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .depoimento-card {
+            background-color: var(--branco);
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: left;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            flex: 0 0 calc(33.333% - 1.5rem);
+            margin: 0 0.75rem;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .depoimento-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+        
+        .depoimento-card::before {
+            content: "";
+            font-size: 5rem;
+            color: var(--laranja);
+            opacity: 0.2;
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            font-family: Georgia, serif;
+        }
+        
+        .depoimento-texto {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            color: var(--cinza-escuro);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .depoimento-autor {
+            display: flex;
+            align-items: center;
+        }
+        
+        .autor-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--laranja);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--branco);
+            font-weight: bold;
+            margin-right: 1rem;
+        }
+        
+        .autor-info h4 {
+            color: var(--preto);
+            margin-bottom: 0.2rem;
+        }
+        
+        .autor-info p {
+            color: var(--cinza-escuro);
+            font-size: 0.9rem;
+        }
+        
+        .avaliacao {
+            color: var(--amarelo);
+            margin-bottom: 1rem;
+        }
+        
+        .carrossel-controles {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+            gap: 1rem;
+        }
+        
+        .carrossel-btn {
+            background-color: var(--laranja);
+            color: var(--branco);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .carrossel-btn:hover {
+            background-color: #e07605;
+        }
+        
+        .carrossel-btn:disabled {
+            background-color: var(--cinza-medio);
+            cursor: not-allowed;
+        }
+        
+        .carrossel-indicadores {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .indicador {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--cinza-medio);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .indicador.ativo {
+            background-color: var(--laranja);
+        }
+        
+        /* Rodapé */
+        footer {
+            background-color: var(--preto);
+            color: var(--branco);
+            padding: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .contato {
+            margin-bottom: 1.5rem;
+        }
+        
+        .contato h3 {
+            margin-bottom: 1rem;
+            color: var(--laranja);
+        }
+        
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 1024px) {
+            .depoimento-card {
+                flex: 0 0 calc(50% - 1.5rem);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .intro {
+                padding: 2rem 1rem;
+            }
+            
+            .intro h2 {
+                font-size: 1.7rem;
+            }
+            
+            .categorias {
+                padding: 1rem;
+            }
+            
+            .destaques {
+                padding: 2rem 1rem;
+            }
+            
+            .depoimentos {
+                padding: 2rem 1rem;
+            }
+            
+            .depoimento-card {
+                flex: 0 0 calc(100% - 1.5rem);
+            }
+            
+            .logo-img {
+                max-width: 150px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo-img {
+                max-width: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="BLÁ-COMUNICAÇÃO-LOGO_04.png" alt="Blá Comunicação" class="logo-img" id="logo">
+        </div>
+        <div class="slogan"></div>
+    </header>
+    
+    <section class="intro">
+        <h2>Soluções Visuais para seu Negócio</h2>
+        <p>Na Blá Comunicação, oferecemos serviços especializados em fotografia, vídeo, design e assessoria para impulsionar sua presença digital e física. Transformamos suas ideias em realidade visual.</p>
+    </section>
+    
+    <section class="categorias">
+        <h2 style="text-align: center; margin-bottom: 2rem;">Nossas Categorias de Serviços</h2>
+        <div class="categorias-grid">
+            <div class="categoria-card">
+                <div class="categoria-icon">
+                    <i class="fas fa-video"></i>
+                </div>
+                <h3 class="categoria-titulo">Vídeo</h3>
+                <p class="categoria-descricao">Produção de vídeos promocionais, mídias indoor e animações para suas campanhas.</p>
+                <a href="vídeo.html" class="btn-explorar">Explorar</a>
+            </div>
+            
+            <div class="categoria-card">
+                <div class="categoria-icon">
+                    <i class="fas fa-camera"></i>
+                </div>
+                <h3 class="categoria-titulo">Fotografia</h3>
+                <p class="categoria-descricao">Sessões fotográficas profissionais para produtos, catálogos e campanhas publicitárias.</p>
+                <a href="fotografia.html" class="btn-explorar">Explorar</a>
+            </div>
+            
+            <div class="categoria-card">
+                <div class="categoria-icon">
+                    <i class="fas fa-palette"></i>
+                </div>
+                <h3 class="categoria-titulo">Arte/Design</h3>
+                <p class="categoria-descricao">Criação de artes para redes sociais, panfletos, cardápios e material gráfico.</p>
+                <a href="arte.html" class="btn-explorar">Explorar</a>
+            </div>
+            
+            <div class="categoria-card">
+                <div class="categoria-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3 class="categoria-titulo">Assessorias</h3>
+                <p class="categoria-descricao">Consultoria e gestão para sua presença digital e estratégias de comunicação.</p>
+                <a href="assessorias.html" class="btn-explorar">Explorar</a>
+            </div>
+        </div>
+    </section>
+    
+    <section class="destaques">
+        <h2>Por que escolher a Blá Comunicação?</h2>
+        <div class="destaques-grid">
+            <div class="destaque-card">
+                <div class="destaque-imagem">
+                    <i class="fas fa-award" style="font-size: 4rem;"></i>
+                </div>
+                <div class="destaque-conteudo">
+                    <h3>Qualidade Garantida</h3>
+                    <p>Trabalhamos com equipamentos de última geração e profissionais qualificados para entregar o melhor resultado.</p>
+                </div>
+            </div>
+            
+            <div class="destaque-card">
+                <div class="destaque-imagem">
+                    <i class="fas fa-clock" style="font-size: 4rem;"></i>
+                </div>
+                <div class="destaque-conteudo">
+                    <h3>Entrega Rápida</h3>
+                    <p>Respeitamos prazos e entregamos seu projeto dentro do tempo combinado, sem comprometer a qualidade.</p>
+                </div>
+            </div>
+            
+            <div class="destaque-card">
+                <div class="destaque-imagem">
+                    <i class="fas fa-handshake" style="font-size: 4rem;"></i>
+                </div>
+                <div class="destaque-conteudo">
+                    <h3>Atendimento Personalizado</h3>
+                    <p>Oferecemos soluções sob medida para atender às necessidades específicas do seu negócio.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="depoimentos">
+        <h2>O que nossos clientes dizem</h2>
+        <div class="carrossel-container">
+            <div class="carrossel-track" id="carrossel-track">
+                <!-- Depoimento 1 -->
+                <div class="depoimento-card">
+                    <div class="avaliacao">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="depoimento-texto">"A Blá Comunicação transformou completamente a presença digital da minha empresa. As fotos profissionais aumentaram em 40% as vendas do nosso e-commerce. Super recomendo!"</p>
+                    <div class="depoimento-autor">
+                        <div class="autor-avatar">MC</div>
+                        <div class="autor-info">
+                            <h4>Marina Costa</h4>
+                            <p>Proprietária - Boutique Estilo Próprio</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Depoimento 2 -->
+                <div class="depoimento-card">
+                    <div class="avaliacao">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="depoimento-texto">"Contratei os serviços de vídeo para lançar meu novo produto e fiquei impressionado com a qualidade. A equipe foi super profissional e o resultado superou todas as expectativas."</p>
+                    <div class="depoimento-autor">
+                        <div class="autor-avatar">RS</div>
+                        <div class="autor-info">
+                            <h4>Ricardo Silva</h4>
+                            <p>CEO - TechInova Solutions</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Depoimento 3 -->
+                <div class="depoimento-card">
+                    <div class="avaliacao">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="depoimento-texto">"O cardápio que a Blá criou para nosso restaurante é fantástico! Os clientes elogiam muito o design e a praticidade. Aumentou consideravelmente nossas vendas dos pratos especiais."</p>
+                    <div class="depoimento-autor">
+                        <div class="autor-avatar">AS</div>
+                        <div class="autor-info">
+                            <h4>Ana Santos</h4>
+                            <p>Gerente - Restaurante Sabor & Arte</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Depoimento 4 -->
+                <div class="depoimento-card">
+                    <div class="avaliacao">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="depoimento-texto">"A assessoria em redes sociais mudou completamente nosso engajamento. Em 3 meses, aumentamos em 300% nosso alcance orgânico. A equipe é muito criativa e estratégica."</p>
+                    <div class="depoimento-autor">
+                        <div class="autor-avatar">PF</div>
+                        <div class="autor-info">
+                            <h4>Paulo Ferreira</h4>
+                            <p>Diretor de Marketing - FitLife Suplementos</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Depoimento 5 -->
+                <div class="depoimento-card">
+                    <div class="avaliacao">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="depoimento-texto">"Já contratamos diversos serviços da Blá e sempre ficamos satisfeitos. A identidade visual que criaram para nossa marca foi essencial para nos diferenciarmos no mercado. Profissionais incríveis!"</p>
+                    <div class="depoimento-autor">
+                        <div class="autor-avatar">LO</div>
+                        <div class="autor-info">
+                            <h4>Laura Oliveira</h4>
+                            <p>Fundadora - Espaço Zen Bem-Estar</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Depoimento 6 -->
+                <div class="depoimento-card">
+                    <div class="avaliacao">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="depoimento-texto">"A produção do vídeo institucional foi impecável. Capturaram perfeitamente a essência da nossa marca e o resultado final foi além do que imaginávamos. Parceria de sucesso!"</p>
+                    <div class="depoimento-autor">
+                        <div class="autor-avatar">CR</div>
+                        <div class="autor-info">
+                            <h4>Carlos Rodrigues</h4>
+                            <p>Diretor - EcoSolutions Brasil</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="carrossel-controles">
+            <button class="carrossel-btn" id="carrossel-anterior">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="carrossel-btn" id="carrossel-proximo">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+        
+        <div class="carrossel-indicadores" id="carrossel-indicadores">
+            <!-- Os indicadores serão gerados via JavaScript -->
+        </div>
+    </section>
+    
+    <footer>
+        <div class="contato">
+            <h3>Entre em contato</h3>
+            <p>Email: contato@blacomunicacao.com</p>
+            <p>Telefone: (11) 9565-84634</p>
+        </div>
+        <div class="copyright">
+            &copy; 2023 Blá Comunicação. Todos os direitos reservados.
+        </div>
+    </footer>
+    
+    <script>
+        // Função para configurar o tamanho da logo
+        function configurarLogo(tamanho, corBorda, espessuraBorda) {
+            const logo = document.getElementById('logo');
+            
+            // Configurar tamanho
+            if (tamanho) {
+                logo.style.maxWidth = tamanho;
+            }
+            
+            // Configurar borda
+            if (corBorda && espessuraBorda) {
+                logo.style.border = `${espessuraBorda} solid ${corBorda}`;
+                logo.style.borderRadius = '8px';
+                logo.style.padding = '5px';
+            } else if (corBorda) {
+                logo.style.border = `2px solid ${corBorda}`;
+                logo.style.borderRadius = '8px';
+                logo.style.padding = '5px';
+            } else if (espessuraBorda) {
+                logo.style.border = `${espessuraBorda} solid transparent`;
+            }
+        }
+
+        // Função para alterar a logo (mantida para compatibilidade)
+        function alterarLogo(novaSrc, novaCor) {
+            const logo = document.getElementById('logo');
+            if (novaSrc) {
+                logo.src = novaSrc;
+            }
+            if (novaCor) {
+                logo.style.filter = `brightness(0) invert(1) hue-rotate(${novaCor}deg)`;
+            }
+        }
+
+        // Exemplos de uso:
+        // configurarLogo('300px', '#f08406', '3px'); // Logo maior com borda laranja
+        // configurarLogo('150px'); // Apenas muda o tamanho
+        // alterarLogo('nova-logo.png'); // Troca a imagem da logo
+
+        // Carrossel de depoimentos - Versão Infinita Unidirecional
+        document.addEventListener('DOMContentLoaded', function() {
+            const carrosselTrack = document.getElementById('carrossel-track');
+            const btnAnterior = document.getElementById('carrossel-anterior');
+            const btnProximo = document.getElementById('carrossel-proximo');
+            const carrosselIndicadores = document.getElementById('carrossel-indicadores');
+            
+            const totalDepoimentos = 6;
+            let slidesPorVez = 3;
+            let slideAtual = 0;
+            let isTransitioning = false;
+            
+            // Clonar os primeiros depoimentos para criar efeito infinito suave
+            const primeiroDepoimento = carrosselTrack.children[0].cloneNode(true);
+            const segundoDepoimento = carrosselTrack.children[1].cloneNode(true);
+            carrosselTrack.appendChild(primeiroDepoimento);
+            carrosselTrack.appendChild(segundoDepoimento);
+            
+            // Ajustar slides por vez baseado no tamanho da tela
+            function ajustarSlidesPorVez() {
+                if (window.innerWidth <= 768) {
+                    slidesPorVez = 1;
+                } else if (window.innerWidth <= 1024) {
+                    slidesPorVez = 2;
+                } else {
+                    slidesPorVez = 3;
+                }
+                atualizarCarrossel();
+            }
+            
+            // Criar indicadores
+            function criarIndicadores() {
+                carrosselIndicadores.innerHTML = '';
+                const totalIndicadores = Math.ceil(totalDepoimentos / slidesPorVez);
+                
+                for (let i = 0; i < totalIndicadores; i++) {
+                    const indicador = document.createElement('div');
+                    indicador.className = 'indicador';
+                    if (i === 0) indicador.classList.add('ativo');
+                    indicador.addEventListener('click', () => {
+                        if (!isTransitioning) {
+                            slideAtual = i * slidesPorVez;
+                            atualizarCarrossel();
+                        }
+                    });
+                    carrosselIndicadores.appendChild(indicador);
+                }
+            }
+            
+            // Atualizar carrossel
+            function atualizarCarrossel() {
+                if (isTransitioning) return;
+                
+                isTransitioning = true;
+                
+                const porcentagem = -(slideAtual * (100 / slidesPorVez));
+                carrosselTrack.style.transform = `translateX(${porcentagem}%)`;
+                
+                // Atualizar estado dos botões
+                btnAnterior.disabled = false;
+                btnProximo.disabled = false;
+                
+                // Atualizar indicadores
+                const indicadorAtual = Math.floor(slideAtual / slidesPorVez) % Math.ceil(totalDepoimentos / slidesPorVez);
+                const indicadores = document.querySelectorAll('.indicador');
+                indicadores.forEach((indicador, index) => {
+                    if (index === indicadorAtual) {
+                        indicador.classList.add('ativo');
+                    } else {
+                        indicador.classList.remove('ativo');
+                    }
+                });
+                
+                // Reset da transição após término
+                setTimeout(() => {
+                    isTransitioning = false;
+                    
+                    // Se chegou ao final (clones), voltar ao início sem transição
+                    if (slideAtual >= totalDepoimentos) {
+                        carrosselTrack.style.transition = 'none';
+                        slideAtual = 0;
+                        carrosselTrack.style.transform = `translateX(0%)`;
+                        
+                        // Forçar reflow
+                        void carrosselTrack.offsetWidth;
+                        
+                        // Restaurar transição
+                        carrosselTrack.style.transition = 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+                    }
+                }, 800);
+            }
+            
+            // Avançar slide
+            function avancarSlide() {
+                if (isTransitioning) return;
+                
+                slideAtual += slidesPorVez;
+                
+                // Se passou do último depoimento original, usar os clones
+                if (slideAtual > totalDepoimentos) {
+                    // Já será tratado no atualizarCarrossel
+                }
+                
+                atualizarCarrossel();
+            }
+            
+            // Retroceder slide
+            function retrocederSlide() {
+                if (isTransitioning) return;
+                
+                slideAtual -= slidesPorVez;
+                
+                // Se voltou antes do primeiro, ir para o final
+                if (slideAtual < 0) {
+                    slideAtual = totalDepoimentos - slidesPorVez;
+                    if (slideAtual < 0) slideAtual = 0;
+                }
+                
+                atualizarCarrossel();
+            }
+            
+            // Event listeners
+            btnAnterior.addEventListener('click', retrocederSlide);
+            btnProximo.addEventListener('click', avancarSlide);
+            
+            // Inicializar
+            window.addEventListener('resize', ajustarSlidesPorVez);
+            ajustarSlidesPorVez();
+            criarIndicadores();
+            
+            // Auto avançar a cada 5 segundos
+            setInterval(avancarSlide, 5000);
+        });
+    </script>
+</body>
+</html>
